@@ -14,11 +14,9 @@ import { toArray } from './utils/toArray';
 export class NgxErrorsDirective implements OnChanges, OnDestroy, AfterViewInit {
 
   @Input('ngxErrors')
-  controlName: string;
+  control: AbstractControl;
 
   subject = new BehaviorSubject<ErrorDetails>(null);
-
-  control: AbstractControl;
 
   ready: boolean = false;
 
@@ -72,7 +70,6 @@ export class NgxErrorsDirective implements OnChanges, OnDestroy, AfterViewInit {
   }
 
   ngOnChanges() {
-    this.control = this.form.control.get(this.controlName);
   }
   
   ngAfterViewInit() {
